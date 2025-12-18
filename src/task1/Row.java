@@ -1,6 +1,5 @@
 package task1;
 
-// 1. Клас Row (Рядок) - елемент таблиці
 public class Row implements Cloneable {
     private int id;
     private String data;
@@ -22,7 +21,6 @@ public class Row implements Cloneable {
         return data;
     }
 
-    // Метод для створення глибокої копії рядка
     @Override
     public Row clone() {
         return new Row(this.id, this.data);

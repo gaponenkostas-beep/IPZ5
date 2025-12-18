@@ -1,6 +1,5 @@
 package task1;
 
-// 4. TransactionManager - керує процесом
 public class TransactionManager {
     private Table table;
     private TableSnapshot transactionStartSnapshot;
@@ -15,7 +14,6 @@ public class TransactionManager {
             System.out.println("ТМ: Транзакція вже активна!");
             return;
         }
-        // Створюємо знімок перед початком серії операцій
         this.transactionStartSnapshot = table.createSnapshot();
         this.isTransactionActive = true;
         System.out.println("\n=== ТМ: Транзакція розпочата. Знімок збережено. ===");
@@ -23,7 +21,7 @@ public class TransactionManager {
 
     public void commit() {
         if (!isTransactionActive) return;
-        this.transactionStartSnapshot = null; // Видаляємо знімок, зміни затверджені
+        this.transactionStartSnapshot = null;
         this.isTransactionActive = false;
         System.out.println("=== ТМ: Транзакція зафіксована (Commit). ===");
     }
@@ -40,7 +38,6 @@ public class TransactionManager {
         System.out.println("=== ТМ: Таблицю відновлено до стану на початок транзакції. ===");
     }
 
-    // Методи-обгортки для виконання операцій всередині транзакції
     public void insert(Row row) {
         ensureTransaction();
         table.insert(row);
@@ -56,7 +53,6 @@ public class TransactionManager {
         table.delete(id);
     }
 
-    // Автоматичний початок транзакції, якщо забули викликати begin
     private void ensureTransaction() {
         if (!isTransactionActive) {
             beginTransaction();

@@ -2,11 +2,9 @@ package task1;
 
 import java.util.HashMap;
 import java.util.Map;
-// 3. Клас Table (Таблиця)
 public class Table {
     private Map<Integer, Row> rows = new HashMap<>();
 
-    // --- Операції над даними ---
     public void insert(Row row) {
         if (rows.containsKey(row.getId())) {
             throw new IllegalArgumentException("Рядок з ID " + row.getId() + " вже існує.");
@@ -34,14 +32,11 @@ public class Table {
         }
     }
 
-    // --- Методи Memento (Знімок) ---
     public TableSnapshot createSnapshot() {
         return new TableSnapshot(this.rows);
     }
 
     public void restore(TableSnapshot snapshot) {
-        // Відновлюємо стан з копії, що в знімку.
-        // Знову робимо глибоку копію, щоб знімок можна було використати повторно
         this.rows = new HashMap<>();
         for (Map.Entry<Integer, Row> entry : snapshot.getState().entrySet()) {
             this.rows.put(entry.getKey(), entry.getValue().clone());

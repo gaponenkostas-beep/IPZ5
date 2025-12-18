@@ -16,12 +16,6 @@ public class Main {
         TransactionManager tm = new TransactionManager(myTable);
 
         // --- Сценарій 1: Успішна транзакція (не показана явно в умові, але для логіки) ---
-        /*
-        tm.beginTransaction();
-        tm.insert(new Row(4, "Date"));
-        tm.commit();
-        */
-
         // --- Сценарій 2: Транзакція з відкатом (Rollback) ---
         tm.beginTransaction();
 
