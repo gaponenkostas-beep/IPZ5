@@ -1,6 +1,5 @@
 package task2;
 
-// 4. Термінальний вираз: Змінна
 public class VariableExpression implements Expression {
     private String name;
 

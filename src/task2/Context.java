@@ -2,7 +2,6 @@ package task2;
 
 import java.util.HashMap;
 import java.util.Map;
-// 2. Клас Context (Контекст) - зберігає значення змінних
 public class Context {
     private Map<String, Double> variables = new HashMap<>();
 

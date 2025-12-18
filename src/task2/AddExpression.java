@@ -1,6 +1,5 @@
 package task2;
 
-// Додавання (+)
 public class AddExpression implements Expression {
     private final Expression left;
     private final Expression right;
